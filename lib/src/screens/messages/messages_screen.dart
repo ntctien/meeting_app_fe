@@ -26,7 +26,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
   @override
   void dispose() {
     msgController.dispose();
-    socket.dispose();
+    socket.disconnect();
     super.dispose();
   }
 
@@ -39,6 +39,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
               'name': widget.name,
             })
             .disableAutoConnect()
+            .enableForceNew()
             .build());
     socket.connect();
     socket.onConnect((data) => {print('Connected')});
@@ -54,7 +55,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
 
   void onReceiveMessage(data) {
     setState(() {
-      messages.add(Message(content: data['message'], name: data['user']));
+      messages.add(Message(
+          content: data['message'], name: data['user'], ava: data['color']));
     });
   }
 

@@ -20,8 +20,12 @@ class _MessageItemState extends State<MessageItem> {
           Container(
             width: 50,
             height: 50,
-            decoration:
-                const BoxDecoration(shape: BoxShape.circle, color: Colors.grey),
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: Color(widget.message.ava == null
+                    ? 0xffffffff
+                    : int.parse(widget.message.ava!.replaceAll('#', 'ff'),
+                        radix: 16))),
           ),
           const SizedBox(width: 15),
           Column(
@@ -43,7 +47,8 @@ class _MessageItemState extends State<MessageItem> {
               // ),
               Text(
                 widget.message.name,
-                style: const TextStyle(color: Color.fromARGB(255, 95, 93, 93), fontSize: 13),
+                style: const TextStyle(
+                    color: Color.fromARGB(255, 95, 93, 93), fontSize: 13),
               ),
               const SizedBox(
                 height: 8,

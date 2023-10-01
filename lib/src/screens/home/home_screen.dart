@@ -46,7 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 if (_formKey.currentState!.validate()) {
                   String name = nameController.text;
                   nameController.text = '';
-                  Navigator.pushReplacement(
+                  Navigator.pop(context);
+                  Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => MessagesScreen(
