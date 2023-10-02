@@ -16,6 +16,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
   List<Message> messages = [];
   late Socket socket;
   final msgController = TextEditingController();
+  final scrollController = ScrollController();
 
   @override
   void initState() {
@@ -81,12 +82,13 @@ class _MessagesScreenState extends State<MessagesScreen> {
         child: Column(
           children: [
             Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: messages
-                    .map((message) => MessageItem(message: message))
-                    .toList(),
-              ),
+                child: ListView.builder(
+                  itemCount: messages.length,
+                  itemBuilder: (context, index) {
+                    return MessageItem(message: messages[messages.length - 1 - index]);
+                  },
+                  reverse: true,
+                ),
             ),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 20),

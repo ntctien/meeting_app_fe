@@ -66,15 +66,18 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: Colors.blue,
-        ),
-        onPressed: joinMeeting,
-        child: const Text(
-          'Join meeting',
-          style: TextStyle(color: Colors.white),
+    return Container(
+      color: Colors.white,
+      child: Center(
+        child: TextButton(
+          style: TextButton.styleFrom(
+            backgroundColor: Colors.blue,
+          ),
+          onPressed: joinMeeting,
+          child: const Text(
+            'Join meeting',
+            style: TextStyle(color: Colors.white),
+          ),
         ),
       ),
     );
